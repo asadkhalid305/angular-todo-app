@@ -1,0 +1,40 @@
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Todo } from "../model/Todo";
+import { Observable } from 'rxjs';
+
+const httpOptions = () => {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json'
+  })
+}
+
+@Injectable({
+  providedIn: 'root'
+})
+export class TodoService {
+  baseUrl: string = 'https://jsonplaceholder.typicode.com/todos'
+  todoLimit: string = `?_limit=10`
+  constructor(private http: HttpClient) { }
+
+  //create
+  addTodo(todo: Todo): Observable<Todo[]> {
+    return this.http.post<Todo[]>(`${this.baseUrl}`, todo);
+  }
+
+  //retrieve
+  getTodos(): Observable<Todo[]> {
+    return this.http.get<Todo[]>(`${this.baseUrl}${this.todoLimit}`)
+  }
+
+  //update
+  editTodo(todo: Todo): Observable<any> {
+    return this.http.put(`${this.baseUrl}/${todo.id}`, todo);
+  }
+
+  //delete
+  deleteTodo(todo: Todo): Observable<Todo[]> {
+    return this.http.delete<Todo[]>(`${this.baseUrl}/${todo.id}`);
+  }
+
+}
