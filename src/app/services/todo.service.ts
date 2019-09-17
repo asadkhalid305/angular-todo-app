@@ -3,12 +3,6 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Todo } from "../model/Todo";
 import { Observable } from 'rxjs';
 
-const httpOptions = () => {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json'
-  })
-}
-
 @Injectable({
   providedIn: 'root'
 })
@@ -32,7 +26,7 @@ export class TodoService {
     return this.http.put(`${this.baseUrl}/${todo.id}`, todo);
   }
 
-  //delete
+  //delete_
   deleteTodo(todo: Todo): Observable<Todo[]> {
     return this.http.delete<Todo[]>(`${this.baseUrl}/${todo.id}`);
   }

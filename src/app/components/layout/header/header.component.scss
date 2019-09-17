@@ -1,11 +1,19 @@
-.header {
-  background: #333;
-  color: #fff;
+header {
+  background: black;
+  color: white;
+  padding-top: 30px;
+  font-size: 1em;
   text-align: center;
-  padding: 10px;
-}
 
-.header a {
-  color: #fff;
-  text-decoration: none;
+  a {
+    color: #ffff;
+    padding-right: 5px;
+    text-decoration: none;
+  }
+
+  #nav {
+    text-align: center;
+    margin-top: 10px;
+    padding-bottom: 30px;
+  }
 }
