@@ -28,7 +28,6 @@ export class TodoItemComponent implements OnInit {
   toggleCheck(todo: Todo) {
     //ui
     this.todo.complete = !this.todo.complete
-
     //server
     this.todoService.editTodo(todo).subscribe()
   }
