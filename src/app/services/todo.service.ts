@@ -16,7 +16,7 @@ export class TodoService {
     return this.http.post<Todo[]>(`${this.baseUrl}`, todo);
   }
 
-  //retrieve
+  //get
   getTodos(): Observable<Todo[]> {
     return this.http.get<Todo[]>(`${this.baseUrl}?_${this.todoLimit}`)
   }

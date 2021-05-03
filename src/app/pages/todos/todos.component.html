@@ -1,0 +1,18 @@
+<div>
+  <app-add-todo
+    [isLoading]="isLoading"
+    (addTodo)="addTodo($event)"
+  ></app-add-todo>
+  <div *ngIf="!isLoading; else elseBlock">
+    <div *ngIf="todos.length; else elseBlock">
+      <app-todo-item
+        *ngFor="let todo of todos"
+        [todo]="todo"
+        (toggleTodo)="toggleTodo($event)"
+        (deleteTodo)="deleteTodo($event)"
+      ></app-todo-item>
+    </div>
+    <ng-template #elseBlock>No data to show</ng-template>
+  </div>
+  <ng-template #elseBlock>Loading</ng-template>
+</div>

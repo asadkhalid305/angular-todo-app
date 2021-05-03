@@ -1,38 +1,33 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { Todo } from "../../model/Todo";
-import { TodoService } from "../../services/todo.service";
 
 @Component({
-  selector: 'app-todo-item',
-  templateUrl: './todo-item.component.html',
-  styleUrls: ['./todo-item.component.scss']
+  selector: "app-todo-item",
+  templateUrl: "./todo-item.component.html",
+  styleUrls: ["./todo-item.component.scss"],
 })
 export class TodoItemComponent implements OnInit {
   @Input() todo: Todo;
-  @Output() deleteTodo: EventEmitter<Todo> = new EventEmitter()
+  @Output() toggleTodo: EventEmitter<Todo> = new EventEmitter();
+  @Output() deleteTodo: EventEmitter<Todo> = new EventEmitter();
 
-  constructor(private todoService: TodoService) { }
+  constructor() {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   setClasses() {
     let classes = {
-      todo: true,
-      "is-complete": this.todo.complete
-    }
+      "is-complete": this.todo.isComplete,
+    };
 
-    return classes
+    return classes;
   }
 
-
   toggleCheck(todo: Todo) {
-    //ui
-    this.todo.complete = !this.todo.complete
-    //server
-    this.todoService.editTodo(todo).subscribe()
+    this.toggleTodo.emit(todo);
   }
 
   deleteCheck(todo: Todo) {
-    this.deleteTodo.emit(todo)
+    this.deleteTodo.emit(todo);
   }
 }
