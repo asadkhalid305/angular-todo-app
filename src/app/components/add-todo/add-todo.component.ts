@@ -8,6 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 export class AddTodoComponent implements OnInit {
   @Input() isLoading: Boolean;
   @Output() addTodo: EventEmitter<any> = new EventEmitter();
+  
   title: string;
 
   constructor() {

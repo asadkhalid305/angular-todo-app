@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class TodoService {
   baseUrl: string = 'https://jsonplaceholder.typicode.com/todos'
-  todoLimit: string = `limit=10`
+  limit: string = `limit=10`
   constructor(private http: HttpClient) { }
 
   //create
@@ -18,7 +18,7 @@ export class TodoService {
 
   //get
   getTodos(): Observable<Todo[]> {
-    return this.http.get<Todo[]>(`${this.baseUrl}?_${this.todoLimit}`)
+    return this.http.get<Todo[]>(`${this.baseUrl}?_${this.limit}`)
   }
 
   //update
@@ -26,7 +26,7 @@ export class TodoService {
     return this.http.put(`${this.baseUrl}/${todo.id}`, todo);
   }
 
-  //delete_
+  //delete
   deleteTodo(todo: Todo): Observable<Todo[]> {
     return this.http.delete<Todo[]>(`${this.baseUrl}/${todo.id}`);
   }
